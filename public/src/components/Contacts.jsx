@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo.jpg";
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -74,6 +74,8 @@ const Container = styled.div`
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
   background-color: #080420;
+  border-right: 1px solid #ffffff10; /* Adds separation from chat area */
+
   .brand {
     display: flex;
     align-items: center;
@@ -81,37 +83,44 @@ const Container = styled.div`
     justify-content: center;
     img {
       height: 2rem;
+      filter: drop-shadow(0 0 5px #00ffd1);
     }
     h3 {
       color: white;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
   }
+
   .contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
     gap: 0.8rem;
+    padding-top: 0.8rem;
+    
     &::-webkit-scrollbar {
-      width: 0.2rem;
+      width: 0.3rem;
       &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
+        background-color: #00ffd133;
         border-radius: 1rem;
       }
     }
+
     .contact {
-      background-color: #ffffff34;
+      background-color: #ffffff10; /* Glass effect */
       min-height: 5rem;
       cursor: pointer;
       width: 90%;
-      border-radius: 0.2rem;
-      padding: 0.4rem;
+      border-radius: 0.8rem; /* Softer corners */
+      padding: 0.6rem;
       display: flex;
       gap: 1rem;
       align-items: center;
-      transition: 0.5s ease-in-out;
+      transition: 0.3s ease-in-out;
+      border: 1px solid transparent;
+
       .avatar {
         img {
           height: 3rem;
@@ -119,12 +128,27 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: #e2e8f0;
+          font-size: 1rem;
         }
       }
+
+      &:hover {
+        background-color: #ffffff15;
+        border: 1px solid #00ffd144;
+      }
     }
+
     .selected {
-      background-color: #9a86f3;
+      background-color: #00ffd122;
+      border: 1px solid #00ffd1;
+      box-shadow: 0 0 15px #00ffd133;
+      .username {
+        h3 {
+          color: white;
+          text-shadow: 0 0 5px #00ffd188;
+        }
+      }
     }
   }
 
@@ -133,18 +157,26 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    border-top: 1px solid #ffffff10;
+    
     .avatar {
       img {
-        height: 4rem;
+        height: 3.5rem;
         max-inline-size: 100%;
+        border: 2px solid #00ffd144;
+        border-radius: 50%;
+        padding: 2px;
       }
     }
     .username {
       h2 {
         color: white;
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
       }
     }
+
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       gap: 0.5rem;
       .username {

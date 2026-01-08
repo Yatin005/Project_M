@@ -22,18 +22,37 @@ export default function Logout() {
     </Button>
   );
 }
-
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #9a86f3;
-  border: none;
+  border-radius: 0.6rem;
+  /* Glassmorphism background */
+  background-color: #ffffff10; 
+  border: 1px solid #ffffff15;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+
   svg {
     font-size: 1.3rem;
-    color: #ebe7ff;
+    /* Primary Cyan theme color */
+    color: #00ffd1; 
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: #ff4d4d22; /* Subtle red glow on hover */
+    border: 1px solid #ff4d4d88;
+    box-shadow: 0 0 15px #ff4d4d44;
+    
+    svg {
+      color: #ff4d4d; /* Power icon turns red on hover */
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 `;

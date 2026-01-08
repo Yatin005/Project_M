@@ -1,9 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Custom Scrollbar to match the new theme */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #080420;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ffd1; /* Matches the new Cyan color */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #44a0ff; /* Electric Blue on hover */
 }
 
 body,
@@ -13,12 +28,33 @@ input {
 }
 
 body {
-  max-height: 100vh;
-  max-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
-
+  /* Deep dark gradient for a more premium look */
+  background: radial-gradient(circle at center, #131324 0%, #080420 100%);
+  color: white;
 }
 
+/* Toastify Styling */
 .Toastify__toast-theme--dark {
-  background-color: #00000076 !important;
+  background-color: #080420 !important;
+  border: 1px solid #00ffd133; /* Subtle cyan border */
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.Toastify__progress-bar--dark {
+  background: linear-gradient(to right, #00ffd1, #44a0ff) !important;
+}
+
+/* Common button hover effect for the whole app */
+button {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
 }

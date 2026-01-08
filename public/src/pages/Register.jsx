@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { registerRoute } from "../utils/APIRoutes";
@@ -81,7 +81,7 @@ export default function Register() {
         <form onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h1>snappy</h1>
+            <h1>ChatApp</h1>
           </div>
           <input
             type="text"
@@ -117,9 +117,7 @@ export default function Register() {
     </>
   );
 }
-
 const FormContainer = styled.div`
-  /* ... Styles remain exactly as you have them ... */
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -127,7 +125,9 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  /* Matching the deep radial gradient from your body CSS */
+  background: radial-gradient(circle at center, #131324 0%, #080420 100%);
+
   .brand {
     display: flex;
     align-items: center;
@@ -135,54 +135,95 @@ const FormContainer = styled.div`
     justify-content: center;
     img {
       height: 5rem;
+      filter: drop-shadow(0 0 10px #00ffd155);
     }
     h1 {
       color: white;
       text-transform: uppercase;
+      letter-spacing: 2px;
     }
   }
+
   form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     background-color: #00000076;
     border-radius: 2rem;
     padding: 3rem 5rem;
+    border: 1px solid #ffffff10;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    @media screen and (max-width: 480px) {
+      padding: 2rem;
+      width: 90%;
+    }
   }
+
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
-    border-radius: 0.4rem;
+    border: 0.1rem solid #00ffd144; /* Soft cyan border */
+    border-radius: 0.6rem;
     color: white;
     width: 100%;
     font-size: 1rem;
+    transition: 0.3s ease-in-out;
+
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #00ffd1; /* Bright cyan on focus */
       outline: none;
+      box-shadow: 0 0 10px #00ffd133;
+    }
+
+    &::placeholder {
+      color: #94a3b8;
     }
   }
+
   button {
-    background-color: #4e0eff;
-    color: white;
+    background: linear-gradient(135deg, #00ffd1 0%, #44a0ff 100%);
+    color: #080420;
     padding: 1rem 2rem;
     border: none;
-    font-weight: bold;
+    font-weight: 800;
     cursor: pointer;
-    border-radius: 0.4rem;
+    border-radius: 0.6rem;
     font-size: 1rem;
     text-transform: uppercase;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 0 15px #00ffd122;
+
     &:hover {
-      background-color: #4e0eff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px #00ffd166;
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
+
   span {
-    color: white;
+    color: #94a3b8;
     text-transform: uppercase;
+    font-size: 0.8rem;
+    text-align: center;
+    letter-spacing: 1px;
+    
     a {
-      color: #4e0eff;
+      color: #00ffd1;
       text-decoration: none;
       font-weight: bold;
+      margin-left: 5px;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: #44a0ff;
+        text-shadow: 0 0 10px #44a0ff55;
+      }
     }
   }
 `;

@@ -71,7 +71,6 @@ useEffect(() => {
     </>
   );
 }
-
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -80,15 +79,33 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  /* Updated to match your global deep radial background */
+  background: radial-gradient(circle at center, #131324 0%, #080420 100%);
+
   .container {
     height: 85vh;
     width: 85vw;
     background-color: #00000076;
     display: grid;
     grid-template-columns: 25% 75%;
+    /* Glassmorphism effects for the main dashboard */
+    border: 1px solid #ffffff10;
+    border-radius: 1rem; 
+    overflow: hidden; /* Ensures child components respect the border-radius */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
+      height: 90vh;
+      width: 95vw;
+    }
+
+    @media screen and (max-width: 720px) {
+      grid-template-columns: 100%; /* Stack for mobile if needed */
+      height: 100vh;
+      width: 100vw;
+      border-radius: 0;
     }
   }
 `;

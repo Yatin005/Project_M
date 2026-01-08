@@ -47,13 +47,13 @@ export default function ChatInput({ handleSendMsg }) {
     </Container>
   );
 }
-
 const Container = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 5% 95%;
   background-color: #080420;
   padding: 0 2rem;
+  padding-bottom: 0.3rem;
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
     gap: 1rem;
@@ -67,33 +67,34 @@ const Container = styled.div`
       position: relative;
       svg {
         font-size: 1.5rem;
-        color: #ffff00c8;
+        color: #00ffd1cc; /* Changed yellow to Cyan */
         cursor: pointer;
+        transition: 0.3s ease-in-out;
+        &:hover {
+          color: #00ffd1;
+        }
       }
-      .emoji-picker-react {
+      /* Improved Emoji Picker Styling */
+      .EmojiPickerReact, .emoji-picker-react {
         position: absolute;
-        top: -350px;
-        background-color: #080420;
-        box-shadow: 0 5px 10px #9a86f3;
-        border-color: #9a86f3;
-        .emoji-scroll-wrapper::-webkit-scrollbar {
+        top: -460px;
+        background-color: #080420 !important;
+        box-shadow: 0 5px 20px #00ffd144;
+        border: 1px solid #00ffd188 !important;
+        --epr-bg-color: #080420;
+        --epr-category-label-bg-color: #080420;
+        
+        .epr-scrollbar::-webkit-scrollbar {
           background-color: #080420;
           width: 5px;
           &-thumb {
-            background-color: #9a86f3;
+            background-color: #00ffd1;
           }
         }
-        .emoji-categories {
-          button {
-            filter: contrast(0);
-          }
-        }
-        .emoji-search {
-          background-color: transparent;
-          border-color: #9a86f3;
-        }
-        .emoji-group:before {
-          background-color: #080420;
+        .epr-search {
+          background-color: transparent !important;
+          border: 1px solid #00ffd188 !important;
+          color: white;
         }
       }
     }
@@ -104,7 +105,9 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 2rem;
-    background-color: #ffffff34;
+    background-color: #ffffff10; /* Glassmorphism */
+    border: 1px solid #ffffff15;
+    
     input {
       width: 90%;
       height: 60%;
@@ -112,13 +115,16 @@ const Container = styled.div`
       color: white;
       border: none;
       padding-left: 1rem;
-      font-size: 1.2rem;
+      font-size: 1rem;
 
       &::selection {
-        background-color: #9a86f3;
+        background-color: #00ffd144;
       }
       &:focus {
         outline: none;
+      }
+      &::placeholder {
+        color: #94a3b8;
       }
     }
     button {
@@ -127,8 +133,12 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #9a86f3;
+      /* Vibrant Gradient Button */
+      background: linear-gradient(135deg, #00ffd1 0%, #44a0ff 100%);
       border: none;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+      
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         padding: 0.3rem 1rem;
         svg {
@@ -136,8 +146,12 @@ const Container = styled.div`
         }
       }
       svg {
-        font-size: 2rem;
-        color: white;
+        font-size: 1.8rem;
+        color: #080420; /* Dark icon on bright button */
+      }
+      &:hover {
+        box-shadow: 0 0 15px #00ffd188;
+        transform: scale(1.05);
       }
     }
   }
